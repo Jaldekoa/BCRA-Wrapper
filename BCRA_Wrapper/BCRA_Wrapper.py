@@ -29,7 +29,7 @@ def datos_variable(id_variable: int, desde: str, hasta: str) -> pd.DataFrame:
     Args:
         id_variable (int): ID de la variable deseada, la misma se puede consultar por el endpoint “Obtener principales variables”.
         desde (str): Corresponde a la fecha de inicio del rango a consultar, la misma deberá tener el formato YYYY-MM-DD.
-        hasta (str): Corresponde a la fecha de fin del rango a consultar, la misma deberá tener el formato YYY-MM-DD.
+        hasta (str): Corresponde a la fecha de fin del rango a consultar, la misma deberá tener el formato YYYY-MM-DD.
 
     Returns:
         pd.DataFrame: DataFrame de pandas con las columnas idVariable, fecha y valor.
