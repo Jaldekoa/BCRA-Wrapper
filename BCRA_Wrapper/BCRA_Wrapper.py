@@ -5,7 +5,7 @@ base_url = "https://api.bcra.gob.ar"
 
 
 def __connect_to_data(url: str) -> pd.DataFrame:
-    res = requests.get(url)
+    res = requests.get(url, verify=False)
     json = res.json()
 
     if res.status_code == 200:
