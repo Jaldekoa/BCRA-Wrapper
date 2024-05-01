@@ -2,6 +2,11 @@
 This repository contains a Python wrapper to interact with the official BCRA (Banco Central de la República Argentina) API.
 BCRA's API does not require tokens or registration, so feel free to use it.
 
+## Instalation
+```commandline
+pip install BCRA-Wrapper
+```
+
 ## Methods
 
 ### principales_variables (all variables)
@@ -14,7 +19,6 @@ BCRA_Wrapper.principales_variables()
 ```
 #### Returns
 - `pd.DataFrame`: A DataFrame containing all variables published by the BCRA.
-
 
 
 ### datos_variable (data for a single variable)
