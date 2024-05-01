@@ -2,7 +2,7 @@
 This repository contains a Python wrapper to interact with the official BCRA (Banco Central de la República Argentina) API.
 BCRA's API does not require tokens or registration, so feel free to use it.
 
-## Instalation
+## Installation
 ```commandline
 pip install BCRA-Wrapper
 ```
