@@ -2,7 +2,7 @@
 This repository contains a Python wrapper to interact with the official BCRA (Banco Central de la República Argentina) API.
 BCRA's API does not require tokens or registration, so feel free to use it.
 
-## Endpoints
+## Methods
 
 ### principales_variables (all variables)
 Method to obtain the list of all variables published by the BCRA.

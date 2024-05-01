@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+BCRA_Wrapper/BCRA_Wrapper.py
+BCRA_Wrapper/__init__.py
+BCRA_Wrapper.egg-info/PKG-INFO
+BCRA_Wrapper.egg-info/SOURCES.txt
+BCRA_Wrapper.egg-info/dependency_links.txt
+BCRA_Wrapper.egg-info/requires.txt
+BCRA_Wrapper.egg-info/top_level.txt

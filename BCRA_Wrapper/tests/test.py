@@ -1,6 +1,5 @@
 from BCRA_Wrapper.BCRA_Wrapper import datos_variable, principales_variables
 import pandas as pd
-import pytest
 
 
 def test_principales_variables():

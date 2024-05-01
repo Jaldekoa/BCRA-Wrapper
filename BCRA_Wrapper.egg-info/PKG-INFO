@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: BCRA-Wrapper
+Version: 0.0.1
+Summary: BCRA (Banco Central de la República Argentina) API wrapper in Python
+Home-page: https://github.com/Jaldekoa/BCRA-Wrapper
+Author: Jon Aldekoa
+Author-email: jaldekoa@gmail.com
+Keywords: python,primer paquete
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: requests
+
+Python wrapper to interact with the official BCRA (Banco Central de la República Argentina) API. BCRA's API does not require tokens or registration, so feel free to use it.
