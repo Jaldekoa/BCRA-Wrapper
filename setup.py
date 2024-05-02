@@ -1,21 +1,21 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 VERSION = "0.0.1"
-DESCRIPTION = "BCRA (Banco Central de la República Argentina) API wrapper in Python"
-LONG_DESCRIPTION = "Python wrapper to interact with the official BCRA (Banco Central de la República Argentina) API. BCRA's API does not require tokens or registration, so feel free to use it."
+DESCRIPTION = "Python API for Banco Central de la República Argentina (BCRA)"
+LONG_DESCRIPTION = open('README.md').read()
 
 setup(
-    name="BCRA-Wrapper",
+    name="bcraapi",
     version=VERSION,
     url="https://github.com/Jaldekoa/BCRA-Wrapper",
     author="Jon Aldekoa",
     author_email="jaldekoa@gmail.com",
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
-    packages=["BCRA_Wrapper"],
-    test_suite='BCRA_Wrapper.tests.test',
+    packages=["bcraapi"],
+    test_suite='bcraapi.tests.test',
+    platforms=["Any"],
     install_requires=["pandas", "requests"],
-    keywords=['python', 'primer paquete'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Education",
