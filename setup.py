@@ -1,8 +1,11 @@
 from setuptools import setup
+from pathlib import Path
 
 VERSION = "0.0.1"
+THIS_PATH = Path(__file__).parent
 DESCRIPTION = "Python API for Banco Central de la República Argentina (BCRA)"
-LONG_DESCRIPTION = open('README.md').read()
+LONG_DESCRIPTION = (THIS_PATH / "README.md").read_text(encoding="utf-8")
+
 
 setup(
     name="bcraapi",
@@ -12,6 +15,7 @@ setup(
     author_email="jaldekoa@gmail.com",
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     packages=["bcraapi"],
     test_suite='bcraapi.tests.test',
     platforms=["Any"],
