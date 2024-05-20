@@ -1,6 +1,5 @@
 import requests
 import warnings
-from . import base_url
 
 
 def __check_lang(lang: str = "es-AR"):
@@ -23,7 +22,7 @@ def connect_to_bcra(endpoint: str, lang: str = None) -> dict:
         dict: JSON de respuesta.
     """
 
-    header = __check_lang(lang)
+    base_url, header = "https://api.bcra.gob.ar/estadisticas/v1", __check_lang(lang)
     res = requests.get(f"{base_url}/{endpoint}", headers=header, verify=False)
     json = res.json()
 

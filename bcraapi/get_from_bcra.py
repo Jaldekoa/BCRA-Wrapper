@@ -1,6 +1,7 @@
-from . import base_url
 import pandas as pd
 import requests
+
+base_url = "https://api.bcra.gob.ar"
 
 
 def __connect_to_data(url: str) -> pd.DataFrame:
@@ -33,7 +34,7 @@ def datos_variable(id_variable: int, desde: str, hasta: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame de pandas con las columnas idVariable, fecha y valor.
     """
-    df = __connect_to_data(f"{base_url}/DatosVariable/{id_variable}/{desde}/{hasta}")
+    df = __connect_to_data(f"{base_url}/estadisticas/v1/DatosVariable/{id_variable}/{desde}/{hasta}")
     df = __parse_cols(df)
     return df
 
@@ -45,6 +46,6 @@ def principales_variables() -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame de pandas con las columnas idVariable, cdSerie, fecha y valor.
     """
-    df = __connect_to_data(f"{base_url}/PrincipalesVariables")
+    df = __connect_to_data(f"{base_url}/estadisticas/v1/principalesvariables")
     df = __parse_cols(df)
     return df
