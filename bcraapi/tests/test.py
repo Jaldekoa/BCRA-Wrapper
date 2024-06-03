@@ -10,7 +10,7 @@ def test_principales_variables():
     assert isinstance(principales_variables(), pd.DataFrame)
 
 
-@pytest.mark.parametrize("id_variable", variable_ids)  # 27, 28, 29
+@pytest.mark.parametrize("id_variable", variable_ids)
 def test_datos_variable(id_variable):
     df = datos_variable(id_variable, "2024-01-01", f"{datetime.today():%Y-%m-%d}")
     assert isinstance(df, pd.DataFrame) and not df.empty
