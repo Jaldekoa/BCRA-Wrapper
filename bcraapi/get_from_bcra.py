@@ -16,9 +16,9 @@ def __connect_to_data(url: str) -> pd.DataFrame:
 
 def __parse_cols(df: pd.DataFrame) -> pd.DataFrame:
     if "fecha" in df.columns:
-        df["fecha"] = pd.to_datetime(df["fecha"], format="%d/%m/%Y").dt.strftime("%Y-%m-%d")
+        df["fecha"] = pd.to_datetime(df["fecha"], format="%Y-%m-%d")
     if "valor" in df.columns:
-        df["valor"] = df["valor"].str.replace(".", "").str.replace(",", ".").astype(float)
+        df["valor"] = pd.to_numeric(df["valor"])
     return df
 
 
@@ -34,7 +34,7 @@ def datos_variable(id_variable: int, desde: str, hasta: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame de pandas con las columnas idVariable, fecha y valor.
     """
-    df = __connect_to_data(f"{base_url}/estadisticas/v1/DatosVariable/{id_variable}/{desde}/{hasta}")
+    df = __connect_to_data(f"{base_url}/estadisticas/v2.0/DatosVariable/{id_variable}/{desde}/{hasta}")
     df = __parse_cols(df)
     return df
 
@@ -46,6 +46,6 @@ def principales_variables() -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame de pandas con las columnas idVariable, cdSerie, fecha y valor.
     """
-    df = __connect_to_data(f"{base_url}/estadisticas/v1/principalesvariables")
+    df = __connect_to_data(f"{base_url}/estadisticas/v2.0/principalesvariables")
     df = __parse_cols(df)
     return df

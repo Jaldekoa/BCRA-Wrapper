@@ -22,7 +22,7 @@ def connect_to_bcra(endpoint: str, lang: str = None) -> dict:
         dict: JSON de respuesta.
     """
 
-    base_url, header = "https://api.bcra.gob.ar/estadisticas/v1", __check_lang(lang)
+    base_url, header = "https://api.bcra.gob.ar/estadisticas/v2.0", __check_lang(lang)
     res = requests.get(f"{base_url}/{endpoint}", headers=header, verify=False)
     json = res.json()
 
