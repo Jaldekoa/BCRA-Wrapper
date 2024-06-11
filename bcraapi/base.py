@@ -1,4 +1,5 @@
 from .metadata import cols_to_parse
+from typing import Union, Dict, List
 import pandas as pd
 import requests
 import os
@@ -26,7 +27,7 @@ def __flatten_dict(d: dict, mem: dict = None) -> dict:
     return mem
 
 
-def __json_to_df(json: dict | list) -> pd.DataFrame:
+def __json_to_df(json: Union[Dict, List]) -> pd.DataFrame:
     if isinstance(json, dict):
         json = __flatten_dict(json)
         return pd.DataFrame.from_dict(json, orient='index').T
