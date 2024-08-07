@@ -21,7 +21,7 @@ setup(
     platforms=["Any"],
     install_requires=["pandas", "requests"],
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Education",
         "Intended Audience :: Financial and Insurance Industry",
         "Intended Audience :: Science/Research",
