@@ -1,5 +1,5 @@
+from bcraapi import get_from_bcra
 import pandas as pd
-from .base import *
 
 
 def entidades():
