@@ -99,7 +99,7 @@ DataFrame with the list of currencies of the BCRA.
 
 ### Cotizaciones por fecha
 Method to obtain the list of all current foreign exchange rates published by the BCRA for a given date (yyyy-MM-dd).
-BCRA for a given date. if no date is entered, the last existing quote will be returned.
+BCRA for a given date. If no date is entered, the last existing quote will be returned.
 the last existing quotation will be returned.
 
 ```python
