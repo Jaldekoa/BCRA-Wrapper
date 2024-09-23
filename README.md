@@ -20,6 +20,9 @@ You will be able to consult reported, lost, stolen or adulterated checks. The in
 - ### Estadísticas v2.0
 You will be able to access resources related to the main variables information published by the BCRA. 
 
+- ### Central de Deudores v1.0
+You will be able to access resources related to the main variables information published by the BCRA. 
+
 
 ## API Cheques denunciados v1.0
 ### Entidades
@@ -140,8 +143,62 @@ df = estadisticascambiarias.cotizaciones_moneda(moneda="USD")
 Datarame with the evolution of the exchange rate of a currency.
 
 
+## API Central de Deudores v1.0
+### Deudas 
+Method to obtain the credit situation, amount of debt, days in arrears and observations corresponding to the last period reported by the entities to the BCRA.
+
+```python
+from bcraapi import centraldeudores
+
+df = centraldeudores.deudas(30500010912)
+```
+
+### Args
+| Parameter        | Type  | Description                                                      |
+|------------------|-------|------------------------------------------------------------------|
+| `identificacion` | `str` | Corresponds to CUIT/CUIL/CDI, **it must be 11 characters long**. |
+
+#### Returns 
+DataFrame with the credit situation, amount of debt, days in arrears and observations corresponding to the last period reported by the entities to the BCRA.
+
+
+### Deudas Históricas
+Method to obtain the credit situation for the last 24 months.
+
+```python
+from bcraapi import centraldeudores
+
+df = centraldeudores.deudas_historicas(30500010912)
+```
+
+### Args
+| Parameter        | Type  | Description                                                      |
+|------------------|-------|------------------------------------------------------------------|
+| `identificacion` | `str` | Corresponds to CUIT/CUIL/CDI, **it must be 11 characters long**. |
+
+#### Returns 
+DataFrame with the credit situation for the last 24 months.
+
+### Cheques Rechazados
+Method to obtain the rejected checks with their corresponding reasons.
+
+```python
+from bcraapi import centraldeudores
+
+df = centraldeudores.cheques_rechazados(30717283186)
+```
+
+### Args
+| Parameter        | Type  | Description                                                      |
+|------------------|-------|------------------------------------------------------------------|
+| `identificacion` | `str` | Corresponds to CUIT/CUIL/CDI, **it must be 11 characters long**. |
+
+#### Returns 
+DataFrame with the rejected checks with their corresponding reasons.
+
 ## API Documentation:
 - [APIs del Banco Central](https://www.bcra.gob.ar/BCRAyVos/catalogo-de-APIs-banco-central.asp)
 - [API Estadísticas Cambiarias v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=estadisticascambiarias-v1&sectionName=estadisticascambiarias)
 - [API Cheques v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=cheques-v1&sectionName=Cheques)
 - [API Estadísticas v2.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=principales-variables-v2&sectionName=Estad%EDsticas)
+- [API Central de Deudores v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=central-deudores-v1&sectionName=Central%20de%20Deudores)

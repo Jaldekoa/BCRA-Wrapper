@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 import os
 
-__all__ = ["get_from_bcra", "estadisticas", "cheques", "estadisticascambiarias"]
+__all__ = ["get_from_bcra", "estadisticas", "cheques", "estadisticascambiarias", "centraldeudores"]
 
 __base_url = "https://api.bcra.gob.ar"
 __cert_path = os.path.join(os.path.dirname(__file__), "cert/bcra.gob.ar.crt")
@@ -28,22 +28,26 @@ def __connect_to_api(url: str) -> dict:
         raise Exception(f"Error {res.json()['status']}. {'.'.join(res.json()['errorMessages'])}")
 
 
-def __flatten_dict(d: dict, mem: dict = None) -> dict:
-    mem = {} if mem is None else mem
+def __flatten_dict(d: dict, parent_key: str = '', sep: str = '_') -> dict:
+    items = []
     for k, v in d.items():
         if isinstance(v, dict):
-            mem = __flatten_dict(v, mem)
+            items.extend(__flatten_dict(v, parent_key, sep=sep).items())
+        elif isinstance(v, list):
+            for item in v:
+                items.extend(__flatten_dict(item, parent_key, sep=sep).items())
         else:
-            mem[k] = v
-    return mem
+            items.append((k, v))
+    return dict(items)
 
 
 def __json_to_df(json: Union[Dict, List]) -> pd.DataFrame:
     if isinstance(json, dict):
         json = __flatten_dict(json)
-        return pd.DataFrame.from_dict(json, orient='index').T
-    if isinstance(json, list):
-        return pd.DataFrame(json)
+        return pd.DataFrame([json])
+    elif isinstance(json, list):
+        flattened_list = [__flatten_dict(item) for item in json]
+        return pd.DataFrame(flattened_list)
 
 
 def __parse_cols(df: pd.DataFrame) -> pd.DataFrame:
