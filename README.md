@@ -1,4 +1,5 @@
 # bcraapi: Python API for BCRA (Banco Central de la República Argentina)
+[Tests](https://github.com/Jaldekoa/BCRA-Wrapper/actions/workflows/python-package.yml/badge.svg)
 bcraapi is a Python wrapper for BCRA APIs provided by Banco Central de la República Argentina itself.
 It makes use of requests and pandas and returns the data in a pandas DataFrame.
 
