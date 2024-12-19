@@ -19,8 +19,8 @@ You will be able to access to resources related to exchange rate information pub
 - ### Cheques denunciados v1.0
 You will be able to consult reported, lost, stolen or adulterated checks. The information available here is provided by the financial entities operating in the country and is published without alterations.
 
-- ### Estadísticas v2.0
-You will be able to access resources related to the main variables information published by the BCRA. 
+- ### Estadísticas v3.0
+You will be able to access resources related to the main and monetary variables information published by the BCRA. 
 
 - ### Central de Deudores v1.0
 You will be able to access resources related to the main variables information published by the BCRA. 
@@ -57,34 +57,32 @@ df = cheques.denunciados(codigo_entidad=11, numero_cheque=20377516)
 DataFrame with the result if a check is registered as reported or not.
 
 
-## API Estadísticas v2.0
-### Principales Variables
+## API Estadísticas v3.0
+### Monetarias
 Method to obtain the list of all variables published by the BCRA.
 
 ```python
 from bcraapi import estadisticas
 
-df = estadisticas.principales_variables()
+df = estadisticas.monetarias()
 ```
 
-#### Returns 
-DataFrame with the variables published by the BCRA.
-
-### Datos de Variable
 Method to obtain the values for the variable and date range indicated.
 
 ```python
 from bcraapi import estadisticas
 
-df = estadisticas.datos_variable(id_variable=1, desde="2024-02-01", hasta="2024-02-05")
+df = estadisticas.monetarias(id_variable=1, desde="2024-02-01", hasta="2024-02-05")
 ```
 
 ### Args
-| Parameter     | Type  | Description                                                                                                            |
-|---------------|-------|------------------------------------------------------------------------------------------------------------------------|
-| `id_variable` | `int` | ID of the desired variable. You can view all available ids and descriptions with the `principales_variables()` method. |
-| `desde`       | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**.                                        |
-| `hasta`       | `str` | The end date of the range to be queried, it **must be in the format YYYY-MM-DD**.                                          |
+| Parameter     | Type  | Description                                                                         |
+|---------------|-------|-------------------------------------------------------------------------------------|
+| `id_variable` | `int` | ID of the desired variable.                                                         |
+| `desde`       | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
+| `hasta`       | `str` | The end date of the range to be queried, it **must be in the format YYYY-MM-DD**.   |
+| `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
+| `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
 
 #### Returns 
 DataFrame with the values for the selected variable and date range.
@@ -202,5 +200,5 @@ DataFrame with the rejected checks with their corresponding reasons.
 - [APIs del Banco Central](https://www.bcra.gob.ar/BCRAyVos/catalogo-de-APIs-banco-central.asp)
 - [API Estadísticas Cambiarias v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=estadisticascambiarias-v1&sectionName=estadisticascambiarias)
 - [API Cheques v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=cheques-v1&sectionName=Cheques)
-- [API Estadísticas v2.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=principales-variables-v2&sectionName=Estad%EDsticas)
+- [API Estadísticas v3.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=principales-variables-v3&sectionName=Estad%EDsticas)
 - [API Central de Deudores v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=central-deudores-v1&sectionName=Central%20de%20Deudores)
