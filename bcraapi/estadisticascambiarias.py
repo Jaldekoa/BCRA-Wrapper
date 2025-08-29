@@ -1,7 +1,8 @@
 from bcraapi import get_from_bcra
+import pandas as pd
 
 
-def maestros_divisas() -> 'pd.DataFrame':
+def maestros_divisas() -> pd.DataFrame:
     """
     Método para obtener el listado de todas las monedas ISO vigentes, con su respectiva denominación.
 
@@ -11,7 +12,7 @@ def maestros_divisas() -> 'pd.DataFrame':
     return get_from_bcra("/estadisticascambiarias/v1.0/Maestros/Divisas")
 
 
-def cotizaciones(**kwargs) -> 'pd.DataFrame':
+def cotizaciones(**kwargs) -> pd.DataFrame:
     """
     Método para obtener el listado de todas las cotizaciones de divisas vigentes publicadas por el BCRA para una fecha (YYYY-MM-DD) determinada; de no ingresarse una fecha se devolverá la última cotización existente.
 
@@ -24,7 +25,7 @@ def cotizaciones(**kwargs) -> 'pd.DataFrame':
     return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones", **kwargs)
 
 
-def cotizaciones_moneda(moneda: str, **kwargs) -> 'pd.DataFrame':
+def cotizaciones_moneda(moneda: str, **kwargs) -> pd.DataFrame:
     """
     Método para obtener la evolución de cotización de una moneda (ISO) en un rango de fechas particular, de no ingresarse los parámetros de fecha desde y fecha hasta se devolverá la última cotización existente.
 

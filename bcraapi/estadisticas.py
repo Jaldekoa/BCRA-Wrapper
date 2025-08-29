@@ -1,8 +1,9 @@
 from bcraapi import get_from_bcra
 from typing import Union, Optional
+import pandas as pd
 
 
-def monetarias(**kwargs) -> 'pd.DataFrame':
+def monetarias(**kwargs) -> pd.DataFrame:
     """
     Método para obtener la lista de todas las variables monetarias publicadas por el BCRA.
 
@@ -22,7 +23,7 @@ def monetarias(**kwargs) -> 'pd.DataFrame':
     return get_from_bcra("/estadisticas/v4.0/Monetarias", **kwargs)
 
 
-def datos_monetarias(id_variable: Union[int, str], **kwargs) -> 'pd.DataFrame':
+def datos_monetarias(id_variable: Union[int, str], **kwargs) -> pd.DataFrame:
     """
     Método que obtener la evolución de los valores para la variable monetaria en un rango de fechas. Para un mejor rendimiento en la respuesta, se recomienda incluir el filtro de fechas desde y hasta en las consultas.
     
@@ -42,7 +43,7 @@ def datos_monetarias(id_variable: Union[int, str], **kwargs) -> 'pd.DataFrame':
     return get_from_bcra(f"/estadisticas/v4.0/Monetarias/{id_variable}", **kwargs)
 
 
-def metodologia(id_variable: Optional[Union[int, str]], **kwargs) -> 'pd.DataFrame':
+def metodologia(id_variable: Optional[Union[int, str]], **kwargs) -> pd.DataFrame:
     """
     Método para obtener las metodologías correspondientes a cada variable informada.
 
