@@ -6,8 +6,13 @@ import pytest
 variable_ids = monetarias()["idVariable"].tolist()
 
 
-def test_monetarias(): # 4, 11, 13, 15
+def test_monetarias():
     df = monetarias()
+    assert isinstance(df, pd.DataFrame) and not df.empty
+
+
+def test_metodologia_void():
+    df = metodologia()
     assert isinstance(df, pd.DataFrame) and not df.empty
 
 
