@@ -16,13 +16,13 @@ def test_metodologia_void():
     assert isinstance(df, pd.DataFrame) and not df.empty
 
 
-@pytest.mark.parametrize("idVariable", variable_ids)
-def test_datos_monetarias(idVariable):
-    df = datos_monetarias(idVariable, hasta=f"{datetime.today():%Y-%m-%d}")
+@pytest.mark.parametrize("id_variable", variable_ids)
+def test_datos_monetarias(id_variable):
+    df = datos_monetarias(id_variable, hasta=f"{datetime.today():%Y-%m-%d}")
     assert (isinstance(df, pd.DataFrame) and not df.empty)
 
 
-@pytest.mark.parametrize("idVariable", variable_ids)
-def test_metodologia(idVariable):
-    df = metodologia(idVariable)
+@pytest.mark.parametrize("id_variable", variable_ids)
+def test_metodologia(id_variable):
+    df = metodologia(id_variable)
     assert isinstance(df, pd.DataFrame) and not df.empty
