@@ -19,12 +19,13 @@ You will be able to access to resources related to exchange rate information pub
 - ### Cheques denunciados v1.0
 You will be able to consult reported, lost, stolen or adulterated checks. The information available here is provided by the financial entities operating in the country and is published without alterations.
 
-- ### Estadísticas v3.0
+- ###  Estadísticas monetarias y principales variables v4.0 
 You will be able to access resources related to the main and monetary variables information published by the BCRA. 
 
 - ### Central de Deudores v1.0
 You will be able to access resources related to the main variables information published by the BCRA. 
 
+---
 
 ## API Cheques denunciados v1.0
 ### Entidades
@@ -47,45 +48,92 @@ from bcraapi import cheques
 
 df = cheques.denunciados(codigo_entidad=11, numero_cheque=20377516)
 ```
-### Args
-| Parameter        | Type  | Description                                                                                                                              |
-|------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `codigo_entidad` | `int` | ID of the financial entity. It can be queried via `entidades()`.                                                                         |
+#### Args
+| Parameter        | Type  | Description   |
+|------------------|-------|---------------|
+| `codigo_entidad` | `int` | ID of the financial entity. It can be queried via `entidades()`. |
 | `numero_cheque`  | `int` | Corresponds to the check number to be consulted. |
 
 #### Returns 
 DataFrame with the result if a check is registered as reported or not.
 
+---
 
-## API Estadísticas v3.0
-### Monetarias
-Method to obtain the list of all variables published by the BCRA.
-
-```python
-from bcraapi import estadisticas
-
-df = estadisticas.monetarias()
-```
-
-Method to obtain the values for the variable and date range indicated.
+## API Estadísticas v4.0
+### Metodología
+Method for obtaining the methodologies corresponding to each reported variable published by the BCRA.
 
 ```python
 from bcraapi import estadisticas
 
-df = estadisticas.monetarias(id_variable=1, desde="2024-02-01", hasta="2024-02-05")
+df = estadisticas.metodologia()
 ```
 
-### Args
-| Parameter     | Type  | Description                                                                         |
-|---------------|-------|-------------------------------------------------------------------------------------|
-| `id_variable` | `int` | ID of the desired variable.                                                         |
+#### Args
+| Parameter    | Type  | Description |
+|--------------|-------|-----------------------------|
+| `idvariable` | `int` | ID of the desired variable. |
+
+#### Keyword Args
+| Parameter     | Type  | Description   |
+|---------------|-------|---------------|
 | `desde`       | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
 | `hasta`       | `str` | The end date of the range to be queried, it **must be in the format YYYY-MM-DD**.   |
 | `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
 | `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
 
 #### Returns 
+DataFrame with the methodology corresponding to the reported variable.
+
+### Datos de Variables Monetarias
+Method for obtaining the evolution of values for the monetary variable within a date range.
+
+```python
+from bcraapi import estadisticas
+
+df = estadisticas.datos_monetarias(id_variable=1, desde="2024-02-01", hasta="2024-02-05", limit=1000, offset=0)
+```
+
+#### Args
+| Parameter     | Type  | Description                                                                         |
+|---------------|-------|-------------------------------------------------------------------------------------|
+| `id_variable` | `int` | ID of the desired variable. **Required**                                            |
+
+#### Keyword Args
+| Parameter     | Type  | Description                                                                         |
+|---------------|-------|-------------------------------------------------------------------------------------|
+| `desde`       | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
+| `hasta`       | `str` | The end date of the range to be queried, **it must be in the format YYYY-MM-DD**.   |
+| `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
+| `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
+
+#### Returns 
 DataFrame with the values for the selected variable and date range.
+
+### Monetarias
+Method for obtaining a list of all monetary variables published by the BCRA.
+
+```python
+from bcraapi import estadisticas
+
+df = estadisticas.monetarias(id_variable=1, limit=1000, offset=0)
+```
+
+#### Keyword Args
+| Parameter     | Type  | Description                                                                         |
+|---------------|-------|-------------------------------------------------------------------------------------|
+| `id_variable` | `int` | **Optional**. ID of the desired variable.                                           |
+| `categoria`   | `str` | Indicates the classification of the monetary variable. It is not necessary to enter the entire text. |
+| `tipo_serie`   | `str` | It corresponds to the economic characterization of the variable. It is not necessary to enter the entire text. |
+| `periodicidad`   | `str` | Frequency: daily D, monthly M, quarterly T (or Q). |
+| `unidad_expresion`   | `str` | Unit of measurement for the economic variable. It is not necessary to enter the entire text. |
+| `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
+| `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
+
+#### Returns 
+DataFrame with the values for the selected variable and date range.
+
+---
 
 ## API Estadísticas Cambiarias v1.0
 ### Maestro de monedas
@@ -142,6 +190,7 @@ df = estadisticascambiarias.cotizaciones_moneda(moneda="USD")
 #### Returns 
 Datarame with the evolution of the exchange rate of a currency.
 
+---
 
 ## API Central de Deudores v1.0
 ### Deudas 
@@ -200,5 +249,5 @@ DataFrame with the rejected checks with their corresponding reasons.
 - [APIs del Banco Central](https://www.bcra.gob.ar/BCRAyVos/catalogo-de-APIs-banco-central.asp)
 - [API Estadísticas Cambiarias v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=estadisticascambiarias-v1&sectionName=estadisticascambiarias)
 - [API Cheques v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=cheques-v1&sectionName=Cheques)
-- [API Estadísticas v3.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=principales-variables-v3&sectionName=Estad%EDsticas)
+- [API Estadísticas v4.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=principales-variables-v3&sectionName=Estad%EDsticas)
 - [API Central de Deudores v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=central-deudores-v1&sectionName=Central%20de%20Deudores)
