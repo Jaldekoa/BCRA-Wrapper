@@ -31,8 +31,8 @@ __params_map = {
     "desde": "desde",
     "hasta": "hasta",
     "fecha": "fecha",
-    "fecha_desde": "fechaDesde",
-    "fecha_hasta": "fechaHasta"
+    "fecha_desde": "fechadesde",
+    "fecha_hasta": "fechahasta"
 }
 
 
@@ -84,4 +84,3 @@ def get_from_bcra(endpoint: str, **kwargs) -> pd.DataFrame:
     df = __json_to_df(df)
     df = __parse_cols(df)
     return df
-
