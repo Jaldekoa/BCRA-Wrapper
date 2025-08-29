@@ -1,9 +1,7 @@
-from urllib.parse import urlencode
 from bcraapi import get_from_bcra
-import pandas as pd
 
 
-def maestros_divisas() -> pd.DataFrame:
+def maestros_divisas() -> 'pd.DataFrame':
     """
     Método para obtener el listado de todas las monedas ISO vigentes, con su respectiva denominación.
 
@@ -13,23 +11,20 @@ def maestros_divisas() -> pd.DataFrame:
     return get_from_bcra("/estadisticascambiarias/v1.0/Maestros/Divisas")
 
 
-def cotizaciones(fecha: str = None) -> pd.DataFrame:
+def cotizaciones(**kwargs) -> 'pd.DataFrame':
     """
     Método para obtener el listado de todas las cotizaciones de divisas vigentes publicadas por el BCRA para una fecha (YYYY-MM-DD) determinada; de no ingresarse una fecha se devolverá la última cotización existente.
 
-    Args:
+    Keyword Args:
         fecha (int): Corresponde a la fecha del dato a consultar, la misma deberá tener el formato **YYYY-MM-DD**.
 
     Returns:
         pd.DataFrame: DataFrame con los valores para la fecha seleccionada.
     """
-    if fecha is None:
-        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones")
-    else:
-        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones?fecha={fecha}")
+    return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones", **kwargs)
 
 
-def cotizaciones_moneda(moneda: str, **kwargs) -> pd.DataFrame:
+def cotizaciones_moneda(moneda: str, **kwargs) -> 'pd.DataFrame':
     """
     Método para obtener la evolución de cotización de una moneda (ISO) en un rango de fechas particular, de no ingresarse los parámetros de fecha desde y fecha hasta se devolverá la última cotización existente.
 
@@ -46,7 +41,6 @@ def cotizaciones_moneda(moneda: str, **kwargs) -> pd.DataFrame:
         pd.DataFrame: DataFrame con el listado del BCRA.
     """
     if kwargs:
-        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}")
+        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}", **kwargs)
     else:
-        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}?{urlencode(kwargs)}")
-
+        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}")

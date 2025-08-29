@@ -1,8 +1,7 @@
 from bcraapi import get_from_bcra
-import pandas as pd
 
 
-def entidades():
+def entidades() -> 'pd.DataFrame':
     """
     Método para obtener el listado de todas las entidades bancarias del país con su respectivo código de entidad.
 
@@ -12,7 +11,7 @@ def entidades():
     return get_from_bcra("/cheques/v1.0/entidades")
 
 
-def denunciados(codigo_entidad: int, numero_cheque: int) -> pd.DataFrame:
+def denunciados(codigo_entidad: int, numero_cheque: int) -> 'pd.DataFrame':
     """
     Método para saber si un cheque de una determinada entidad se encuentra registrado como denunciado o no.
 
