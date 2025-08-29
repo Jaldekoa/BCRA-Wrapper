@@ -11,8 +11,8 @@ def monetarias(**kwargs) -> 'pd.DataFrame':
         categoria (str): El mismo indica la clasificación de la variable monetaria.
         periodicidad (str): Frecuencia que se generan la variable: Diaria (D), mensual (M) o trimestral (T o Q)
         moneda (str): Vale la pena aclarar que no se está hablando en códigos de monedas ISO. Moneda local (ML), moneda extranjera (ME), combinación de ambas (MEyML), pesos argentinos (ARS) o dólar (USD).
-        tipoSerie (str): Corresponde a la caracterización económica de la variable.
-        unidadExpresion (str): Corresponde a la unidad de medición de la variable económica
+        tipo_serie (str): Corresponde a la caracterización económica de la variable.
+        unidad_expresion (str): Corresponde a la unidad de medición de la variable económica
         offset (int): Registros que debe descartar para el paginado.
         limit (int): Registros que retornará el servicio. El valor máximo es 3000.
         
