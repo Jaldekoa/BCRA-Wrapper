@@ -1,4 +1,5 @@
 from typing import Union, Dict, List
+from urllib.parse import urlencode
 import pandas as pd
 import requests
 import os
@@ -17,6 +18,26 @@ __cols_to_parse = {
     "codigoEntidad": pd.to_numeric,
     "numeroCuenta": pd.to_numeric,
 }
+
+__params_map = {
+    "id_variable": "idVariable",
+    "categoria": "categoria",
+    "periodicidad": "periodicidad",
+    "moneda": "moneda",
+    "tipo_serie": "tipoSerie",
+    "unidad_expresion": "unidadExpresion",
+    "offset": "offset",
+    "limit": "limit",
+    "desde": "desde",
+    "hasta": "hasta",
+    "fecha": "fecha",
+    "fecha_desde": "fechaDesde",
+    "fecha_hasta": "fechaHasta"
+}
+
+
+def __parse_params(params: dict) -> dict:
+    return {__params_map[k]: v for k, v in params.items() if k in __params_map and v is not None}
 
 
 def __connect_to_api(url: str) -> dict:
@@ -56,8 +77,10 @@ def __parse_cols(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def get_from_bcra(endpoint: str) -> pd.DataFrame:
-    df = __connect_to_api(url=f"{__base_url}{endpoint}")
+def get_from_bcra(endpoint: str, **kwargs) -> pd.DataFrame:
+    if kwargs:
+        kwargs = __parse_params(kwargs)
+    df = __connect_to_api(url=f"{__base_url}{endpoint}?{urlencode(kwargs)}")
     df = __json_to_df(df)
     df = __parse_cols(df)
     return df
