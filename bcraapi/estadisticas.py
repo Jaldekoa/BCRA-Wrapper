@@ -43,7 +43,7 @@ def datos_monetarias(id_variable: Union[int, str], **kwargs) -> pd.DataFrame:
     return get_from_bcra(f"/estadisticas/v4.0/Monetarias/{id_variable}", **kwargs)
 
 
-def metodologia(id_variable: Optional[Union[int, str]], **kwargs) -> pd.DataFrame:
+def metodologia(id_variable: Optional[Union[int, str]] = None, **kwargs) -> pd.DataFrame:
     """
     Método para obtener las metodologías correspondientes a cada variable informada.
 
