@@ -23,7 +23,10 @@ You will be able to consult reported, lost, stolen or adulterated checks. The in
 You will be able to access resources related to the main and monetary variables information published by the BCRA. 
 
 - ### Central de Deudores v1.0
-You will be able to access resources related to the main variables information published by the BCRA. 
+You will be able to access resources related to the main variables information published by the BCRA.
+
+- ### Régimen de Transparencia v1.0
+You will be able to access standardized information that financial entities must publish according to BCRA regulations. It allows consulting products, interest rates, commissions, and other regulated data.
 
 ---
 
