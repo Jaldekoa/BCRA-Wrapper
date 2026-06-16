@@ -49,10 +49,10 @@ from bcraapi import cheques
 df = cheques.denunciados(codigo_entidad=11, numero_cheque=20377516)
 ```
 #### Args
-| Parameter        | Type  | Description   |
-|------------------|-------|---------------|
+| Parameter        | Type  | Description                                                      |
+| ---------------- | ----- | ---------------------------------------------------------------- |
 | `codigo_entidad` | `int` | ID of the financial entity. It can be queried via `entidades()`. |
-| `numero_cheque`  | `int` | Corresponds to the check number to be consulted. |
+| `numero_cheque`  | `int` | Corresponds to the check number to be consulted.                 |
 
 #### Returns 
 DataFrame with the result if a check is registered as reported or not.
@@ -70,17 +70,17 @@ df = estadisticas.metodologia()
 ```
 
 #### Args
-| Parameter    | Type  | Description |
-|--------------|-------|-----------------------------|
+| Parameter    | Type  | Description                 |
+| ------------ | ----- | --------------------------- |
 | `idvariable` | `int` | ID of the desired variable. |
 
 #### Keyword Args
-| Parameter     | Type  | Description   |
-|---------------|-------|---------------|
-| `desde`       | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
-| `hasta`       | `str` | The end date of the range to be queried, it **must be in the format YYYY-MM-DD**.   |
-| `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
-| `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
+| Parameter | Type  | Description                                                                         |
+| --------- | ----- | ----------------------------------------------------------------------------------- |
+| `desde`   | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
+| `hasta`   | `str` | The end date of the range to be queried, it **must be in the format YYYY-MM-DD**.   |
+| `offset`  | `int` | Records to discard for paging. Default: 0.                                          |
+| `limit`   | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
 
 #### Returns 
 DataFrame with the methodology corresponding to the reported variable.
@@ -95,17 +95,17 @@ df = estadisticas.datos_monetarias(id_variable=1, desde="2024-02-01", hasta="202
 ```
 
 #### Args
-| Parameter     | Type  | Description                                                                         |
-|---------------|-------|-------------------------------------------------------------------------------------|
-| `id_variable` | `int` | ID of the desired variable. **Required**                                            |
+| Parameter     | Type  | Description                              |
+| ------------- | ----- | ---------------------------------------- |
+| `id_variable` | `int` | ID of the desired variable. **Required** |
 
 #### Keyword Args
-| Parameter     | Type  | Description                                                                         |
-|---------------|-------|-------------------------------------------------------------------------------------|
-| `desde`       | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
-| `hasta`       | `str` | The end date of the range to be queried, **it must be in the format YYYY-MM-DD**.   |
-| `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
-| `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
+| Parameter | Type  | Description                                                                         |
+| --------- | ----- | ----------------------------------------------------------------------------------- |
+| `desde`   | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**. |
+| `hasta`   | `str` | The end date of the range to be queried, **it must be in the format YYYY-MM-DD**.   |
+| `offset`  | `int` | Records to discard for paging. Default: 0.                                          |
+| `limit`   | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
 
 #### Returns 
 DataFrame with the values for the selected variable and date range.
@@ -120,15 +120,15 @@ df = estadisticas.monetarias(id_variable=1, limit=1000, offset=0)
 ```
 
 #### Keyword Args
-| Parameter     | Type  | Description                                                                         |
-|---------------|-------|-------------------------------------------------------------------------------------|
-| `id_variable` | `int` | **Optional**. ID of the desired variable.                                           |
-| `categoria`   | `str` | Indicates the classification of the monetary variable. It is not necessary to enter the entire text. |
-| `tipo_serie`   | `str` | It corresponds to the economic characterization of the variable. It is not necessary to enter the entire text. |
-| `periodicidad`   | `str` | Frequency: daily D, monthly M, quarterly T (or Q). |
-| `unidad_expresion`   | `str` | Unit of measurement for the economic variable. It is not necessary to enter the entire text. |
-| `offset`      | `int` | Records to discard for paging. Default: 0.                                          |
-| `limit`       | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.    |
+| Parameter          | Type  | Description                                                                                                    |
+| ------------------ | ----- | -------------------------------------------------------------------------------------------------------------- |
+| `id_variable`      | `int` | **Optional**. ID of the desired variable.                                                                      |
+| `categoria`        | `str` | Indicates the classification of the monetary variable. It is not necessary to enter the entire text.           |
+| `tipo_serie`       | `str` | It corresponds to the economic characterization of the variable. It is not necessary to enter the entire text. |
+| `periodicidad`     | `str` | Frequency: daily D, monthly M, quarterly T (or Q).                                                             |
+| `unidad_expresion` | `str` | Unit of measurement for the economic variable. It is not necessary to enter the entire text.                   |
+| `offset`           | `int` | Records to discard for paging. Default: 0.                                                                     |
+| `limit`            | `int` | Records to be returned by the service. The maximum value is 3000. Default: 1000.                               |
 
 #### Returns 
 DataFrame with the values for the selected variable and date range.
@@ -161,7 +161,7 @@ df = estadisticascambiarias.cotizaciones(fecha="2024-06-12")
 
 ### Args
 | Parameter | Type  | Description                                                               |
-|-----------|-------|---------------------------------------------------------------------------|
+| --------- | ----- | ------------------------------------------------------------------------- |
 | `fecha`   | `str` | Date of the data to be consulted, it must have the format **YYYY-MM-DD**. |
 
 #### Returns 
@@ -180,12 +180,12 @@ df = estadisticascambiarias.cotizaciones_moneda(moneda="USD")
 
 ### Args
 | Parameter     | Type  | Description                                                                                    |
-|---------------|-------|------------------------------------------------------------------------------------------------|
+| ------------- | ----- | ---------------------------------------------------------------------------------------------- |
 | `moneda`      | `str` | ISO currency. **This parameter is required**                                                   |
 | `fecha_desde` | `str` | The start date of the range to be queried, **it must be in the format YYYY-MM-DD**.            |
 | `fecha_hasta` | `str` | The end date of the range to be queried, **it must be in the format YYYY-MM-DD**.              |
 | `limit`       | `int` | Maximum amount to be returned per application. **Must be greater than 10 and less than 1000**. |
-| `ofset`       | `int` | Exclude from the answer the first N elements of the contributions to be refunded..              |
+| `ofset`       | `int` | Exclude from the answer the first N elements of the contributions to be refunded..             |
 
 #### Returns 
 Datarame with the evolution of the exchange rate of a currency.
@@ -204,7 +204,7 @@ df = centraldeudores.deudas(30500010912)
 
 ### Args
 | Parameter        | Type  | Description                                                      |
-|------------------|-------|------------------------------------------------------------------|
+| ---------------- | ----- | ---------------------------------------------------------------- |
 | `identificacion` | `str` | Corresponds to CUIT/CUIL/CDI, **it must be 11 characters long**. |
 
 #### Returns 
@@ -222,7 +222,7 @@ df = centraldeudores.deudas_historicas(30500010912)
 
 ### Args
 | Parameter        | Type  | Description                                                      |
-|------------------|-------|------------------------------------------------------------------|
+| ---------------- | ----- | ---------------------------------------------------------------- |
 | `identificacion` | `str` | Corresponds to CUIT/CUIL/CDI, **it must be 11 characters long**. |
 
 #### Returns 
@@ -239,11 +239,162 @@ df = centraldeudores.cheques_rechazados(30717283186)
 
 ### Args
 | Parameter        | Type  | Description                                                      |
-|------------------|-------|------------------------------------------------------------------|
+| ---------------- | ----- | ---------------------------------------------------------------- |
 | `identificacion` | `str` | Corresponds to CUIT/CUIL/CDI, **it must be 11 characters long**. |
 
 #### Returns 
 DataFrame with the rejected checks with their corresponding reasons.
+
+---
+
+## API Régimen de Transparencia v1.0 
+
+Authentication is **not required** for any endpoint in this API.
+
+### Cajas de ahorros 
+
+Method to obtain the complete list of savings accounts (cajas de ahorro) or filter by a specific financial entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.cajas_ahorros(codigo_entidad=11)
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+#### Returns
+
+DataFrame with the details of the financial entity, report date, and whether it uses a simplified due diligence onboarding process (`procesoSimplificadoDebidaDiligencia`).
+
+### Paquetes de productos 
+
+Method to obtain the complete list of product bundles (paquetes de productos) or filter them by a specific entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.paquetes_productos(codigo_entidad=14)
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+#### Returns
+
+DataFrame including bundle name, segment (e.g., Básico, Premium), participating products, maximum monthly maintenance commission (`comisionMaximaMantenimiento`), age/income requirements, validity territory, and additional information.
+
+### Plazos fijos 
+
+Method to obtain the complete list of fixed-term deposits (plazos fijos) or filter by a specific entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.plazos_fijos(codigo_entidad=303)
+
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+#### Returns
+
+DataFrame containing full type name, currency denomination (e.g., Pesos, USD, UVAs), minimum investment amount/days, acquisition channels (e.g., Home banking, ATM), minimum annual effective rate (`tasaEfectivaAnualMinima`), and offer validity territory.
+
+### Préstamos prendarios 
+
+Method to obtain the complete list of pledge loans (préstamos prendarios) or filter them by a specific entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.prestamos_prendarios(codigo_entidad=7)
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+#### Returns
+
+DataFrame outlining loan limits, evaluation rules (e.g., `relacionMontoTasacion`), maximum repayment terms, beneficiary profile, early cancellation fee, maximum annual effective rate, maximum total financial cost (`costoFinancieroEfectivoTotalMaximo`), initial installment per $10,000, and target funds use.
+
+### Préstamos hipotecarios 
+
+Method to obtain the complete list of mortgage loans (préstamos hipotecarios) or filter them by a specific entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.prestamos_hipotecarios(codigo_entidad=7)
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+
+#### Returns
+
+DataFrame outlining target funds use (e.g., main residence, construction, improvement), loan boundaries, maximum terms, required income, maximum annual effective rate, financial cost, initial installment per $100,000, and rate adjustment rules.
+
+### Préstamos personales 
+
+Method to obtain the complete list of personal loans (préstamos personales) or filter them by a specific entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.prestamos_personales(codigo_entidad=55236)
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+
+#### Returns
+
+DataFrame outlining minimum/maximum loanable amount, currency denomination, monthly income and job seniority requirements, maximum age, installment-to-income ratio (`relacionCuotaIngreso`), beneficiary segment, early cancellation charge, maximum annual effective rate, total financial cost, initial installment per $10,000, and validity region.
+
+### Tarjetas de crédito 
+
+Method to obtain the complete list of credit cards (tarjetas de crédito) or filter them by a specific entity.
+
+```python
+from bcraapi import transparencia
+
+df = transparencia.tarjetas_credito(codigo_entidad=341)
+```
+
+#### Keyword Args
+
+| Parameter        | Type  | Description                                                    |
+| ---------------- | ----- | -------------------------------------------------------------- |
+| `codigo_entidad` | `int` | **Optional**. ID of the financial entity assigned by the BCRA. |
+
+#### Returns
+
+DataFrame with credit card full/short name, maximum monthly maintenance commission, maximum renewal fee (`comisionMaximaRenovacion`), maximum financing/cash-advance annual effective interest rates, income/seniority requirements, commercial segment (e.g., Gold, Platinum, Black), and validity territory.
+
+---
 
 ## API Documentation:
 - [APIs del Banco Central](https://www.bcra.gob.ar/BCRAyVos/catalogo-de-APIs-banco-central.asp)
@@ -251,3 +402,4 @@ DataFrame with the rejected checks with their corresponding reasons.
 - [API Cheques v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=cheques-v1&sectionName=Cheques)
 - [API Estadísticas v4.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=principales-variables-v3&sectionName=Estad%EDsticas)
 - [API Central de Deudores v1.0](https://www.bcra.gob.ar/Catalogo/apis.asp?fileName=central-deudores-v1&sectionName=Central%20de%20Deudores)
+- [API Régimen de Transparencia v1.0](https://www.bcra.gob.ar/documentacion-apis/?fileName=regimen-transparencia-v1)
