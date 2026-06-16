@@ -86,7 +86,6 @@ def __connect_to_api(url: str, verify_cert: Union[bool, str] = False, timeout: i
     res = requests.get(url, verify=verify, timeout=timeout)
 
     if res.status_code == 200:
-        # It's safer to use .get to prevent KeyError if 'results' is missing
         data = res.json()
         return data.get('results', [])
         
