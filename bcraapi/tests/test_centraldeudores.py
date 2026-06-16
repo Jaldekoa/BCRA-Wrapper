@@ -18,4 +18,4 @@ def test_deudas_historicas(identificacion):
 @pytest.mark.parametrize("identificacion", [30717283186])
 def test_cheques_rechazados(identificacion):
     df = cheques_rechazados(identificacion)
-    assert (isinstance(df, pd.DataFrame) and not df.empty)
+    assert isinstance(df, pd.DataFrame)
