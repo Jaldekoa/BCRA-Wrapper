@@ -41,7 +41,4 @@ def cotizaciones_moneda(moneda: str, **kwargs) -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame con el listado del BCRA.
     """
-    if kwargs:
-        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}", **kwargs)
-    else:
-        return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}")
+    return get_from_bcra(f"/estadisticascambiarias/v1.0/Cotizaciones/{moneda}", **kwargs)
